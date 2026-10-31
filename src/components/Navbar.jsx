@@ -10,9 +10,9 @@ export default function Navbar({ onSearch }) {
   }
 
   return (
-    <header className="sticky top-4 z-50 mx-auto w-full max-w-7xl px-4">
+    <header className="sticky top-4 z-50 mx-auto w-full max-w-8xl px-4">
       {/* Container Kapsul Hitam Utama */}
-      <div className="flex items-center justify-between gap-3 rounded-full bg-black px-3 py-3.5 text-white shadow-xl lg:px-4">
+      <div className="flex items-center justify-between gap-3 rounded-full bg-black/95 px-3 py-3.5 text-white shadow-xl lg:px-4">
         
         {/* KIRI: Logo Navbar Khusus & Search Bar */}
         <div className="flex flex-1 items-center gap-3">

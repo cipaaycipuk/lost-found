@@ -3,21 +3,20 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
   return (
     <footer
-      className="w-full bg-black text-white pt-12 lg:pt-16 pb-32 lg:pb-44 px-6 lg:px-16 mt-20 bg-no-repeat"
+      className="w-full text-white pt-12 pb-32 lg:pb-44 bg-no-repeat bg-cover"
       style={{
         backgroundImage: "url('/bg-footer.png')",
-        backgroundSize: '100% 100%', // KUNCI UTAMA: Memaksa gambar pas 100% lebar & 100% tinggi tanpa gap!
         backgroundPosition: 'center',
       }}
     >
       <div className="mx-auto max-w-7xl">
         
         {/* Konten Atas */}
-        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between mb-16 lg:mb-24">
+        <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between mb-16 lg:mb-10">
           
           {/* Kiri: Judul CTA & Tombol */}
           <div className="space-y-6 max-w-lg">
-            <h2 className="text-3xl font-bold leading-tight sm:text-4xl text-white">
+            <h2 className="text-3xl font-semibold tracking-tight leading-tight sm:text-4xl text-white">
               Kehilangan barang di kampus atau sekitarnya<span className="text-[#e0531c]">?</span>
             </h2>
 
@@ -87,10 +86,10 @@ export default function Footer() {
         </div>
 
         {/* Garis Pembatas */}
-        <hr className="mb-6 border-gray-800/80" />
+        <hr className="mb-4 border-white/40" />
 
         {/* Copyright */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-gray-400 font-medium">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-md text-gray-300/70 font-normal leading-tight">
           <p>©2026 Lost &amp; Found Campus</p>
           <p>Created by kelompok 2 PTI</p>
         </div>
