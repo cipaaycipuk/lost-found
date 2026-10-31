@@ -3,13 +3,14 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import FilterSidebar from "../components/FilterSidebar";
 import PostCard from "../components/PostCard";
+import PostDetail from "../components/PostDetail";
 
 // Dummy Data
 const INITIAL_POSTS = [
   {
     id: 1,
-    user: "Rayyanza Cipung",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rayyanza",
+    user: "Rony Parulian",
+    avatar: "/users/rony.jpg",
     time: "21 detik yang lalu",
     status: "Kehilangan",
     title: "Tumbler minum leopard",
@@ -18,15 +19,14 @@ const INITIAL_POSTS = [
     category: "Handphone",
     description:
       "Dicari tumbler dengan motif leopard, terakhir simpen di gedung B lt.406",
-    image:
-      "https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=500&auto=format&fit=crop",
+    image: "/posts-img/tumbler.jpg",
     whatsapp: "08123456789",
     commentsCount: 5,
   },
   {
     id: 2,
-    user: "Rayyanza Cipung",
-    avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rayyanza2",
+    user: "Alyssa Daguise",
+    avatar: "/users/alyssa.jpg",
     time: "2 hari yang lalu",
     status: "Ditemukan",
     title: "Hp Cipunk",
@@ -35,8 +35,23 @@ const INITIAL_POSTS = [
     category: "Handphone",
     description:
       "Kemarin aku nemu hp di foodcourt di kursi bagian depan bakmie, kalo ada yg merasa langsung aja chat aku",
-    image:
-      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=500&auto=format&fit=crop",
+    image: "/posts-img/guitar.jpg",
+    whatsapp: "08987654321",
+    commentsCount: 0,
+  },
+  {
+    id: 3,
+    user: "Emily Ashley",
+    avatar: "/users/emily.jpg",
+    time: "2 hari yang lalu",
+    status: "Kehilangan",
+    title: "Demokrasi Indonesia",
+    location: "Foodcourt",
+    date: "10 September 2026",
+    category: "Handphone",
+    description:
+      "Kemarin aku nemu hp di foodcourt di kursi bagian depan bakmie, kalo ada yg merasa langsung aja chat aku",
+    image: "/posts-img/imusic.jpg",
     whatsapp: "08987654321",
     commentsCount: 0,
   },
@@ -47,6 +62,7 @@ export default function Home() {
   const [category, setCategory] = useState("Semua kategori");
   const [location, setLocation] = useState("Semua");
   const [sortBy, setSortBy] = useState("Terbaru");
+  const [selectedPost, setSelectedPost] = useState(null);
 
   // Filter berdasarkan jenis laporan
   const filteredPosts = INITIAL_POSTS.filter((post) => {
@@ -76,7 +92,6 @@ export default function Home() {
 
         <div className="mx-auto max-w-7xl px-4 pb-8 pt-10 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
             {/* Sidebar Filter */}
             <FilterSidebar
               activeTab={activeTab}
@@ -92,11 +107,25 @@ export default function Home() {
 
             {/* Feed Postingan */}
             <main className="lg:col-span-8 space-y-5">
-              {filteredPosts.map((post) => (
-                <PostCard key={post.id} post={post} />
-              ))}
+              {selectedPost ? (
+                /* Jika ada post yang dipilih -> Tampilkan Detail */
+                <PostDetail
+                  post={selectedPost}
+                  onBack={() => setSelectedPost(null)}
+                />
+              ) : (
+                /* Jika null -> Tampilkan List Postingan */
+                filteredPosts.map((post) => (
+                  <div
+                    key={post.id}
+                    onClick={() => setSelectedPost(post)}
+                    className="cursor-pointer"
+                  >
+                    <PostCard post={post} />
+                  </div>
+                ))
+              )}
             </main>
-
           </div>
         </div>
       </div>

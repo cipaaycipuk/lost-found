@@ -1,21 +1,21 @@
-
 import {
   MapPin,
   CalendarDays,
   MessageSquareReply,
   Bookmark,
   PhoneLog,
+  X,
 } from "lucide-react";
+import { useState } from "react";
 
 export default function PostCard({ post }) {
   const isKehilangan = post.status === "Kehilangan";
+  const [isImageOpen, setIsImageOpen] = useState(false);
 
   return (
     <article
       className={`rounded-lg border border-gray-200 bg-white p-5 shadow-sm space-y-4 border-l-5 transition hover:shadow-md ${
-        isKehilangan
-          ? "border-l-[#FF5F00]"
-          : "border-l-[#0025D7]"
+        isKehilangan ? "border-l-[#FF5F00]" : "border-l-[#0025D7]"
       }`}
     >
       {/* Header Post */}
@@ -24,16 +24,12 @@ export default function PostCard({ post }) {
           <img
             src={post.avatar}
             alt={post.user}
-            className="h-9 w-9 rounded-full bg-gray-100 object-cover"
+            className="h-12 w-12 rounded-full bg-gray-100 object-cover"
           />
 
           <div>
-            <h3 className="text-md font-bold text-gray-900">
-              {post.user}
-            </h3>
-            <p className="text-[11px] text-gray-400">
-              {post.time}
-            </p>
+            <h3 className="text-md font-bold text-gray-900">{post.user}</h3>
+            <p className="text-[11px] text-gray-400">{post.time}</p>
           </div>
         </div>
 
@@ -50,20 +46,21 @@ export default function PostCard({ post }) {
 
       {/* Foto Barang */}
       {post.image && (
-        <div className="overflow-hidden rounded-md bg-gray-100 max-h-[380px]">
+        <div
+          className="aspect-square w-full overflow-hidden rounded-md bg-gray-100 cursor-pointer"
+          onClick={() => setIsImageOpen(true)}
+        >
           <img
             src={post.image}
             alt={post.title}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover object-center transition hover:scale-[1.02]"
           />
         </div>
       )}
 
       {/* Detail Konten */}
       <div>
-        <h2 className="text-xl font-bold text-gray-900 mb-5">
-          {post.title}
-        </h2>
+        <h2 className="text-xl font-bold text-gray-900 mb-5">{post.title}</h2>
 
         <div className="flex flex-wrap gap-3 text-sm mb-2">
           <span className="inline-flex items-center gap-1 rounded-full bg-gray-100/90 px-3 py-2 font-medium text-gray-500 border border-black/10">
@@ -111,6 +108,28 @@ export default function PostCard({ post }) {
           Hubungi Whatsapp
         </a>
       </div>
+      {isImageOpen && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center bg-black/90 p-4"
+          onClick={() => setIsImageOpen(false)}
+        >
+          {/* Close Button */}
+          <button
+            onClick={() => setIsImageOpen(false)}
+            className="absolute right-5 top-5 rounded-full bg-white/10 p-2 text-white transition hover:bg-white/20"
+          >
+            <X size={28} />
+          </button>
+
+          {/* Full Image */}
+          <img
+            src={post.image}
+            alt={post.title}
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[90vh] max-w-[95vw] rounded-md object-contain"
+          />
+        </div>
+      )}
     </article>
   );
 }
