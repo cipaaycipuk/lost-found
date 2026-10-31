@@ -4,7 +4,7 @@ export default function Logo({ className = '' }) {
       <img
         src="/logo-final.png"
         alt="Lost & Found"
-        className="h-8 w-auto object-contain" // Sesuaikan tinggi logo agar pas
+        className="h-8 w-auto object-contain"
       />
     </div>
   )

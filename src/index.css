@@ -8,6 +8,6 @@ body,
   width: 100% !important;
   max-width: 100% !important;
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
   background-color: #f8f9fa;
 }

@@ -10,9 +10,9 @@ export default function Navbar({ onSearch }) {
   }
 
   return (
-    <header className="sticky top-4 z-50 mx-auto w-full max-w-8xl px-4">
+    <header className="sticky top-4 z-50 mx-auto w-full max-w-7xl px-4">
       {/* Container Kapsul Hitam Utama */}
-      <div className="flex items-center justify-between gap-3 rounded-full bg-black/95 px-3 py-3.5 text-white shadow-xl lg:px-4">
+      <div className="flex items-center justify-between gap-3 rounded-full bg-black/75 backdrop-blur-2xl px-3 py-3.5 text-white shadow-xl lg:px-4">
         
         {/* KIRI: Logo Navbar Khusus & Search Bar */}
         <div className="flex flex-1 items-center gap-3">
@@ -26,7 +26,7 @@ export default function Navbar({ onSearch }) {
           </Link>
 
           {/* Search Bar Kapsul Abu-abu */}
-          <div className="flex w-full max-w-sm items-center rounded-full bg-[#4a4a4a] px-3.5 py-2.5 text-sm text-white lg:max-w-md">
+          <div className="flex w-full max-w-sm items-center rounded-full bg-[#ffffff]/25 px-3.5 py-2.5 text-sm text-white lg:max-w-md">
             {/* Icon Hamburger Menu */}
             <svg className="mr-2.5 h-4 w-4 flex-shrink-0 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -38,7 +38,7 @@ export default function Navbar({ onSearch }) {
               placeholder="Hinted search text"
               value={searchQuery}
               onChange={handleSearchChange}
-              className="w-full bg-transparent text-sm text-white placeholder-gray-300 outline-none"
+              className="w-full text-sm placeholder-gray-300 text-white outline-none"
             />
 
             {/* Icon Kaca Pembesar */}
