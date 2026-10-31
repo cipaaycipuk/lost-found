@@ -1,15 +1,13 @@
 @import "tailwindcss";
 
-@theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-logo: "Gaegu", cursive;
-  --color-brand: #f26100;
-  --color-found: #1d2fd6;
-  --color-page: #f3f3f3;
-}
-
-body {
-  margin: 0;
-  background: var(--color-page);
-  font-family: var(--font-sans);
+html,
+body,
+#root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #f8f9fa;
 }
