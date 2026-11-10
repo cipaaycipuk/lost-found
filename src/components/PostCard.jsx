@@ -9,7 +9,7 @@ import {
 import { useState } from "react";
 
 export default function PostCard({ post }) {
-  const isKehilangan = post.status === "Kehilangan";
+  const isKehilangan = post.type === "Kehilangan";
   const [isImageOpen, setIsImageOpen] = useState(false);
 
   return (
@@ -22,14 +22,14 @@ export default function PostCard({ post }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <img
-            src={post.avatar}
-            alt={post.user}
+            src={post.author.avatar}
+            alt={post.author.name}
             className="h-12 w-12 rounded-full bg-gray-100 object-cover"
           />
 
           <div>
-            <h3 className="text-md font-bold text-gray-900">{post.user}</h3>
-            <p className="text-[11px] text-gray-400">{post.time}</p>
+            <h3 className="text-md font-bold text-gray-900">{post.author.name}</h3>
+            <p className="text-[11px] text-gray-400">{post.timeAgo}</p>
           </div>
         </div>
 
@@ -40,7 +40,7 @@ export default function PostCard({ post }) {
               : "bg-[#D8DEFF] text-[#0025D7]"
           }`}
         >
-          {post.status}
+          {post.type}
         </span>
       </div>
 

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import FilterSidebar from "../components/FilterSidebar";
 import PostCard from "../components/PostCard";
 import PostDetail from "../components/PostDetail";
@@ -8,53 +6,66 @@ import PostDetail from "../components/PostDetail";
 // Dummy Data
 const INITIAL_POSTS = [
   {
+    author: {
+      name: "Rony Parulian",
+      email: 'agatha.chelsea@widyatama.ac.id',
+      whatsapp: '0813 1212 3476',
+      avatar: "/users/rony.jpg", 
+    },
     id: 1,
-    user: "Rony Parulian",
-    avatar: "/users/rony.jpg",
-    time: "21 detik yang lalu",
-    status: "Kehilangan",
+    timeAgo: "21 detik yang lalu",
+    type: "Kehilangan",
+    status: 'open', // 'open' | 'selesai'
+    image: "/posts-img/tumbler.jpg",
     title: "Tumbler minum leopard",
     location: "Foodcourt",
     date: "10 September 2026",
     category: "Handphone",
     description:
       "Dicari tumbler dengan motif leopard, terakhir simpen di gedung B lt.406",
-    image: "/posts-img/tumbler.jpg",
-    whatsapp: "08123456789",
     commentsCount: 5,
   },
   {
-    id: 2,
-    user: "Alyssa Daguise",
-    avatar: "/users/alyssa.jpg",
-    time: "2 hari yang lalu",
-    status: "Ditemukan",
-    title: "Hp Cipunk",
+    author: {
+      name: "Rony Parulian",
+      email: 'agatha.chelsea@widyatama.ac.id',
+      whatsapp: '0813 1212 3476',
+      avatar: "/users/rony.jpg", 
+    },
+    id: 1,
+    timeAgo: "21 detik yang lalu",
+    type: "Ditemukan",
+    status: 'open', // 'open' | 'selesai'
+    image: "/posts-img/tumbler.jpg",
+    title: "Tumbler minum leopard",
     location: "Foodcourt",
     date: "10 September 2026",
     category: "Handphone",
     description:
-      "Kemarin aku nemu hp di foodcourt di kursi bagian depan bakmie, kalo ada yg merasa langsung aja chat aku",
-    image: "/posts-img/guitar.jpg",
-    whatsapp: "08987654321",
-    commentsCount: 0,
+      "Dicari tumbler dengan motif leopard, terakhir simpen di gedung B lt.406",
+    commentsCount: 5,
   },
   {
-    id: 3,
-    user: "Emily Ashley",
-    avatar: "/users/emily.jpg",
-    time: "2 hari yang lalu",
-    status: "Kehilangan",
-    title: "Demokrasi Indonesia",
+    author: {
+      name: "Rony Parulian",
+      email: 'agatha.chelsea@widyatama.ac.id',
+      whatsapp: '0813 1212 3476',
+      avatar: "/users/rony.jpg", 
+    },
+    id: 1,
+    timeAgo: "21 detik yang lalu",
+    type: "Kehilangan",
+    status: 'open', // 'open' | 'selesai'
+    image: "/posts-img/tumbler.jpg",
+    title: "Tumbler minum leopard",
     location: "Foodcourt",
     date: "10 September 2026",
     category: "Handphone",
     description:
-      "Kemarin aku nemu hp di foodcourt di kursi bagian depan bakmie, kalo ada yg merasa langsung aja chat aku",
-    image: "/posts-img/imusic.jpg",
-    whatsapp: "08987654321",
-    commentsCount: 0,
+      "Dicari tumbler dengan motif leopard, terakhir simpen di gedung B lt.406",
+    commentsCount: 5,
   },
+  
 ];
 
 export default function Home() {
@@ -86,11 +97,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#f8f9fa] text-gray-800 flex flex-col justify-between w-full">
-      <div className="w-full">
-        <Navbar onSearch={(query) => console.log("Search:", query)} />
-
-        <div className="mx-auto max-w-7xl px-4 pb-8 pt-10 lg:px-8">
+    <div className="mx-auto max-w-7xl px-4 pb-8 pt-10 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
             {/* Sidebar Filter */}
             <FilterSidebar
@@ -128,9 +135,5 @@ export default function Home() {
             </main>
           </div>
         </div>
-      </div>
-
-      <Footer />
-    </div>
   );
 }
