@@ -3,7 +3,7 @@ import { ArrowLeft, MessageCircle, Bookmark, X } from "lucide-react";
 
 export default function PostDetail({ post, onBack }) {
   const [commentText, setCommentText] = useState("");
-  const isKehilangan = post.status === "Kehilangan";
+  const isKehilangan = post.type === "Kehilangan";
   const [isImageOpen, setIsImageOpen] = useState(false);
 
   // Dummy Komentar bawaan jika tidak ada di objek post
@@ -11,13 +11,13 @@ export default function PostDetail({ post, onBack }) {
     {
       id: 1,
       user: "Agatha Chelsea",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Agatha",
+      avatar: "/users/emily.jpg",
       text: "Di ujung sebelah mana nya kak?",
     },
     {
       id: 2,
       user: "Rony Parulian",
-      avatar: "https://api.dicebear.com/7.x/avataaars/svg?seed=Rony",
+      avatar: "/users/rony.jpg",
       text: "Iya kak ujung mananya ya",
       isReply: true, // Untuk posisi menjorok ke dalam
     },
@@ -49,13 +49,13 @@ export default function PostDetail({ post, onBack }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <img
-            src={post.avatar}
-            alt={post.user}
+            src={post.author.avatar}
+            alt={post.author.user}
             className="h-10 w-10 rounded-full bg-gray-100 object-cover"
           />
           <div>
-            <h3 className="text-md font-bold text-gray-900">{post.user}</h3>
-            <p className="text-xs text-gray-400">{post.time}</p>
+            <h3 className="text-md font-bold text-gray-900">{post.author.name}</h3>
+            <p className="text-xs text-gray-400">{post.timeAgo}</p>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ export default function PostDetail({ post, onBack }) {
               : "bg-[#D8DEFF] text-[#0025D7]"
           }`}
         >
-          {post.status}
+          {post.type}
         </span>
       </div>
 
@@ -185,11 +185,11 @@ export default function PostDetail({ post, onBack }) {
             placeholder="Tulis komentar..."
             value={commentText}
             onChange={(e) => setCommentText(e.target.value)}
-            className="flex-1 rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-xs text-gray-800 placeholder-gray-400 outline-none focus:border-black focus:bg-white transition"
+            className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-4 py-2.5 text-xs text-gray-800 placeholder-gray-400 outline-none focus:border-black focus:bg-white transition"
           />
           <button
             type="submit"
-            className="rounded-xl bg-gray-200 px-4 py-2.5 text-xs font-semibold text-gray-700 hover:bg-black hover:text-white transition"
+            className="rounded-lg bg-gray-200 px-4 py-2.5 text-xs font-semibold text-gray-700 hover:bg-black hover:text-white transition"
           >
             Kirim
           </button>
